@@ -17,6 +17,7 @@
 <meta property="og:image" content="{{ full_url ~ 'static/social.png' }}" />
 <meta property="og:title" content="Hello AWS App Runner"/>
 <meta property="og:description" content="Example container to quickly run a service on AWS." />
+
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="{{ full_url ~ 'static/social.png' }}" />
 <meta property="twitter:title" content="Hello AWS App Runner" />
@@ -24,8 +25,10 @@
 <meta property="twitter:description" content="Example container to quickly run a service on AWS." />
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
+
 <title>Hello AWS App Runner</title>
 <style>
+
 /* open-sans-regular - latin */
 @font-face {
   font-family: 'Open Sans';
@@ -39,6 +42,7 @@
        url('../static/fonts/open-sans-v18-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../static/fonts/open-sans-v18-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
 }
+
 body {
   height: 100%;
   width: 100%;
@@ -47,6 +51,7 @@ body {
   color: #FFFFFF;
   background: url("{{ full_url ~ 'static/background.svg' }}") #161E2D no-repeat;
 }
+
 h3 {
   font-size: 16px;
   font-weight: bold;
@@ -55,6 +60,7 @@ h3 {
   color: #FFFFFF;
   /* margin-bottom: 5%; */
 }
+
 h2 {
   font-size: 18px;
   font-weight: bold;
@@ -63,6 +69,7 @@ h2 {
   margin-bottom: 2%;
   margin-top: 3%;
 }
+
 h1 {
   height: 5%;
   font-size: 44px;
@@ -71,6 +78,7 @@ h1 {
   margin-top: -2%;
   line-height: 56px;
 }
+
 .flex-container {
   position: relative;
   justify-content: center;
@@ -79,6 +87,7 @@ h1 {
   margin-top: 7%;
   margin-bottom: 10%;
 }
+
 .row {
   display: flex;
   flex-direction: row;
@@ -86,6 +95,7 @@ h1 {
   justify-content: center;
   width: 100%;
 }
+
 .column {
   flex-direction: column;
   flex-basis: 100%;
@@ -94,10 +104,12 @@ h1 {
   margin-top: 0;
   margin-bottom: 0;
 }
+
 .icon {
   height: 80%;
   margin: 1%;
 }
+
 .subtext {
   color: #FFFFFF;
   font-size: 14px;
@@ -106,6 +118,7 @@ h1 {
   margin-left: 2%;
   margin-right: 2%;
 }
+
 a {
   color: #527FFF;
   font-size: 14px;
@@ -125,11 +138,13 @@ a:hover {
 a:active {
   text-decoration: underline;
 }
+
 html, body {
   font-family: "Open Sans";
   margin:0;
   padding:0;
 }
+
 .banner {
 	left:0;
 	width:100%;
@@ -137,6 +152,7 @@ html, body {
 	display: inline-block;
 	position: relative;
 }
+
 .apprunner_icon {
 	width: 15%;
 	margin-top: 19%;
@@ -144,25 +160,78 @@ html, body {
 	max-height: 200px;
 	min-width: 150px;
 }
+
 @media only screen and (max-width: 875px) {
   body { background: url("{{ full_url ~ 'static/background-mobile.svg' }}") #161E2D no-repeat;}
   .apprunner_icon {	min-width: 100px; }
   .icon { height: 60%; margin: 3%;}
   .flex-container {margin-top: 20%; margin-bottom: 30%;}
 }
+
 @media only screen and (min-width: 2000px) {
   .apprunner_icon {	margin-top: 13%; }
 }
+
 </style>
 </head>
+
 <body>
 	<div class="container">
 		<div class="banner">
 			<img class="apprunner_icon" src="{{ full_url ~ 'static/apprunner_icon.svg' }}" />
 		</div>
 
-		<h1>And we're live!</h1>
 		<h1>And we're live from Desh Deepaks Computer!</h1>
 		<div class="metadata">
 			<p>
         {% if ( '0.0' in full_url or 'localhost' in full_url )  %}
+          <h2>Contratulations, you deployed the container locally.</h2>
+          <p class="subtext">If you would like to run this container publicly check out the links below to get started.</p>
+        {% else %}
+					<h2>Congratulations, your service has successfully deployed on AWS App Runner.</h2>
+        {% endif %}
+			</p>
+		</div>
+		<div class=flex-container>
+			<div class='row'>
+				<div class='column'>
+          {% if ( '0.0' in full_url or 'localhost' in full_url )  %}
+          <img class='icon' src="{{ full_url ~ 'static/git_icon.svg' }}" />
+          {% else %}
+					<img class='icon' src="{{ full_url ~ 'static/twitter_icon.svg' }}" />
+          {% endif %}
+				</div>
+				<div class='column'>
+					<img class='icon' src="{{ full_url ~ 'static/workshop_icon.svg' }}" />
+				</div>
+				<div class='column'>
+					<img class='icon' src="{{ full_url ~ 'static/docs_icon.svg' }}" />
+				</div>
+			</div>
+			<div class='row'>
+				<div class='column'>
+          {% if ( '0.0' in full_url or 'localhost' in full_url )  %}
+          <h3>See the code</h3>
+          <p class='subtext'>Check out the code to run this site in</br>AWS App Runner.</p>
+					<a target="_blank" href="https://github.com/aws-containers/hello-app-runner">Github <img src="{{ full_url ~ 'static/external_link_icon.svg' }}" /></a>
+          {% else %}
+					<h3>Share on Twitter</h3>
+					<p class='subtext'>A unique image has been generated for your service. <br>Share to see yours!</p>
+					<a target="_blank" href="https://twitter.com/intent/tweet?text=I%20just%20deployed%20my%20first%20app%20using%20AWS%20App%20Runner%21%20https://apprunnerworkshop.com%20🚀&hashtags=AWSAppRunner&url={{ full_url }}">Share <img src="{{ full_url ~ 'static/external_link_icon.svg' }}" /></a>
+          {% endif %}
+				</div>
+				<div class='column'>
+					<h3>Learn more in the workshop</h3>
+					<p class='subtext'>Deploy with automated CI/CD and additional examples.</p>
+					<a target="_blank" href="https://apprunnerworkshop.com">Learn more <img src="{{ full_url ~ 'static/external_link_icon.svg' }}" /></a>
+				</div>
+				<div class='column'>
+					<h3>Explore App Runner docs</h3>
+					<p class='subtext'>Leverage App Runner for production services.</p>
+					<a target="_blank" href="https://docs.aws.amazon.com/apprunner">Visit docs <img src="{{ full_url ~ 'static/external_link_icon.svg' }}" /></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
