@@ -181,7 +181,7 @@ html, body {
 			<img class="apprunner_icon" src="{{ full_url ~ 'static/apprunner_icon.svg' }}" />
 		</div>
 
-		<h1>And we're live from Desh Deepaks Computer!</h1>
+		<h1>And we're live from Raju sathish Computer!</h1>
 		<div class="metadata">
 			<p>
         {% if ( '0.0' in full_url or 'localhost' in full_url )  %}
